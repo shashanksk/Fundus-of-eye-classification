@@ -425,8 +425,10 @@ def num_of_images2(path):
 # mask name should end with '_gt' following the image name
 
 
+# changed to .png from _gt.png
 def validation(image_path, mask_path, image_prefix=".png", mask_prefix="_gt.png"):
     image_name_arr = glob.glob(os.path.join(image_path, "*%s" % image_prefix))
+    print(image_name_arr)
     image_arr = []
     mask_arr = []
     for index, item in enumerate(image_name_arr):
@@ -434,6 +436,7 @@ def validation(image_path, mask_path, image_prefix=".png", mask_prefix="_gt.png"
         img = cv2.cvtColor(cv2.imread(item), cv2.COLOR_BGR2RGB)
         mask = cv2.cvtColor(cv2.imread(item.replace(image_path, mask_path).replace(
             image_prefix, mask_prefix)), cv2.COLOR_BGR2RGB)
+        # mask = cv2.cvtColor(cv2.imread(item))
         img = img[:, :, :3]
         mask = mask[:, :, :3] if mask.ndim == 3 else np.repeat(
             mask[:, :, np.newaxis], 3, axis=-1)
