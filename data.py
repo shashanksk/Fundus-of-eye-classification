@@ -6,11 +6,11 @@ from keras.preprocessing.image import ImageDataGenerator
 import glob
 import tensorflow as tf
 
-class1 = [0, 0, 255]  # benign
+class1 = [255, 255, 255]  # benign
 # class2 = [255,0,0] #malignant
 # class3 = [0,255,0] #cytoplasm
 # class4 = [255,0,255] #inflammatory
-class0 = [255, 255, 255]  # background which is the final class
+class0 = [0, 0, 0]  # background which is the final class
 
 check_path = os.path.dirname(os.getcwd()) + "/Results/check"
 # label_values = [class1] + [class2] + [class3]  + [class4]  + [class0]
